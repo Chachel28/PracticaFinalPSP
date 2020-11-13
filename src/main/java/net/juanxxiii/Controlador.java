@@ -13,14 +13,19 @@ public class Controlador {
         Scanner scanner = new Scanner(System.in);
         int registros;
         int numHilos;
-        do {
-            System.out.println("Introduzca el numero de registros a insertar ( no puede ser menor a 1 )");
-            registros = leerEntero(scanner);
-        } while (registros < 1);
-        do {
-            System.out.println("Introduzca el numero de hilos ( no puede ser menor a 1 )");
-            numHilos = leerEntero(scanner);
-        } while (numHilos < 1);
+        do{
+            do {
+                System.out.println("Introduzca el numero de registros a insertar ( no puede ser menor a 1 )");
+                registros = leerEntero(scanner);
+            } while (registros < 1);
+            do {
+                System.out.println("Introduzca el numero de hilos ( no puede ser menor a 1 )");
+                numHilos = leerEntero(scanner);
+            } while (numHilos < 1);
+            if (registros < numHilos) {
+                System.out.println("No puede haber mas hilos que registros, como poco deben ser iguales");
+            }
+        }while(registros >= numHilos);
         int particion = registros / numHilos;
         int resto = registros % numHilos;
         for (int i = 0; i < numHilos; i++) {
