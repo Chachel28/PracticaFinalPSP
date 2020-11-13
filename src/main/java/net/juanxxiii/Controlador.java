@@ -25,7 +25,7 @@ public class Controlador {
             if (registros < numHilos) {
                 System.out.println("No puede haber mas hilos que registros, como poco deben ser iguales");
             }
-        }while(registros >= numHilos);
+        }while(registros < numHilos);
         int particion = registros / numHilos;
         int resto = registros % numHilos;
         for (int i = 0; i < numHilos; i++) {
